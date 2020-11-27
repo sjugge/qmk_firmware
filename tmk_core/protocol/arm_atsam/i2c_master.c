@@ -26,6 +26,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #    include "config_led.h"
 #    include "matrix.h"
 
+// https://github.com/qmk/qmk_firmware/issues/9733
+// https://github.com/qmk/qmk_firmware/pull/9485
+// https://github.com/qmk/qmk_firmware/pull/10728
+ __attribute__((__aligned__(16))) DmacDescriptor dmac_desc;
+ __attribute__((__aligned__(16))) DmacDescriptor dmac_desc_wb;
+
 #    define I2C_LED_USE_DMA 1  // Set 1 to use background DMA transfers for leds, Set 0 to use inline software transfers
 
 static uint8_t i2c_led_q[I2C_Q_SIZE];  // I2C queue circular buffer
