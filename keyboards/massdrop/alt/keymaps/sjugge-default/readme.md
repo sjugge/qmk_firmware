@@ -1,6 +1,6 @@
 # Drop ALT - sjugge
 
-Documentation and info on default overrides of the Drop ALT firmware.
+Documentation and info on customization and overrides of the `default` Drop ALT firmware.
 
 ## Layout
 
