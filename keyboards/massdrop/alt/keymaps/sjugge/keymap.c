@@ -7,9 +7,7 @@ enum alt_keycodes {
     DBG_MTRX,               // DEBUG Toggle Matrix Prints
     DBG_KBD,                // DEBUG Toggle Keyboard Prints
     DBG_MOU,                // DEBUG Toggle Mouse Prints
-    MD_BOOT,                // Restart into bootloader after hold timeout
-    FRZ_KEY,                // Freeze keys RGB to current pattern
-    FRZ_BRD                 // Freeze board RGB to current pattern
+    MD_BOOT                 // Restart into bootloader after hold timeout
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -29,10 +27,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     */
     [1] = LAYOUT_65_ansi_blocker(
-        _______,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______, KC_MUTE, \
-        RGB_M_B, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, FRZ_BRD, FRZ_KEY, _______, _______, \
+        _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______, KC_MUTE, \
+        RGB_M_B, _______, _______, _______, RGB_M_R, _______, _______, _______, _______, _______, _______, RGB_SAD, RGB_SAI, _______, _______, \
         _______, _______, RGB_M_P, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______, RGB_MOD, \
-        _______, _______, _______, _______, _______, MD_BOOT, _______, _______, RGB_HUI, RGB_SAI, _______, _______,          RGB_VAI, RGB_RMOD,\
+        _______, _______, _______, _______, _______, MD_BOOT, _______, RGB_TOG, RGB_HUD, RGB_HUI, _______, _______,          RGB_VAI, RGB_RMOD,\
         UNICODE_KEY_LNX,  _______, _______,                   _______,                            _______, _______, RGB_SPD, RGB_VAD, RGB_SPI  \
     ),
     /*
@@ -51,27 +49,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #define MODS_ALT  (get_mods() & MOD_BIT(KC_LALT) || get_mods() & MOD_BIT(KC_RALT))
 
 // Set startup pattern to the first custom pattern.
-uint32_t desired = 41; // If new patterns are added, this value will need to be adapted.
+uint32_t desired = 44; // If new patterns are added, this value will need to be adapted.
 void matrix_init_user() {
-	rgblight_mode(desired);
+    rgblight_mode(desired);
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     static uint32_t key_timer;
 
     switch (keycode) {
-          // Freeze RGB sections
-          case FRZ_BRD:
-              if (record->event.pressed) {
-                  rgb_matrix_set_flags(LED_FLAG_ALL);
-              }
-              return false;
-          case FRZ_KEY:
-              if (record->event.pressed) {
-                  rgb_matrix_set_flags(LED_FLAG_UNDERGLOW);
-              }
-              return false;
-
         case U_T_AUTO:
             if (record->event.pressed && MODS_SHIFT && MODS_CTRL) {
                 TOGGLE_FLAG_AND_PRINT(usb_extra_manual, "USB extra port manual mode");
