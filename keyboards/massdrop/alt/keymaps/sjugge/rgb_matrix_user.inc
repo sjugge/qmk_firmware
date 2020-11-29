@@ -38,7 +38,7 @@ RGB_MATRIX_EFFECT(HUE_WAVE_5)
     static bool sjugge_tne_orange(effect_params_t* params) {
       RGB_MATRIX_USE_LIMITS(led_min, led_max);
       for (uint8_t i = led_min; i < led_max; i++) {
-        rgb_matrix_set_color_all(135, 45, 0);
+        rgb_matrix_set_color(i, 135, 45, 0);
       }
       return led_max < DRIVER_LED_TOTAL;
     }
@@ -47,7 +47,7 @@ RGB_MATRIX_EFFECT(HUE_WAVE_5)
     static bool sjugge_tne_blue(effect_params_t* params) {
       RGB_MATRIX_USE_LIMITS(led_min, led_max);
       for (uint8_t i = led_min; i < led_max; i++) {
-        rgb_matrix_set_color_all(0, 100, 150);
+        rgb_matrix_set_color(i, 0, 100, 150);
       }
       return led_max < DRIVER_LED_TOTAL;
     }
@@ -56,7 +56,7 @@ RGB_MATRIX_EFFECT(HUE_WAVE_5)
     static bool sjugge_tne_aqua(effect_params_t* params) {
       RGB_MATRIX_USE_LIMITS(led_min, led_max);
       for (uint8_t i = led_min; i < led_max; i++) {
-        rgb_matrix_set_color_all(20, 100, 100);
+        rgb_matrix_set_color(i, 20, 100, 100);
       }
       return led_max < DRIVER_LED_TOTAL;
     }
@@ -65,16 +65,18 @@ RGB_MATRIX_EFFECT(HUE_WAVE_5)
     static bool sjugge_tne_green(effect_params_t* params) {
       RGB_MATRIX_USE_LIMITS(led_min, led_max);
       for (uint8_t i = led_min; i < led_max; i++) {
-        rgb_matrix_set_color_all(20, 75, 20);
+        rgb_matrix_set_color(i, 20, 75, 20);
       }
       return led_max < DRIVER_LED_TOTAL;
     }
+
+    /* Other static colors */
 
     // Carbon beige
     static bool sjugge_carbon_beige(effect_params_t* params) {
       RGB_MATRIX_USE_LIMITS(led_min, led_max);
       for (uint8_t i = led_min; i < led_max; i++) {
-        rgb_matrix_set_color_all(75, 65, 25);
+        rgb_matrix_set_color(i, 75, 65, 25);
       }
       return led_max < DRIVER_LED_TOTAL;
     }
@@ -83,7 +85,8 @@ RGB_MATRIX_EFFECT(HUE_WAVE_5)
     static bool sjugge_alt_brownish(effect_params_t* params) {
       RGB_MATRIX_USE_LIMITS(led_min, led_max);
       for (uint8_t i = led_min; i < led_max; i++) {
-        rgb_matrix_set_color_all(30, 10, 0);
+        RGB_MATRIX_TEST_LED_FLAGS();
+        rgb_matrix_set_color(i, 30, 10, 0);
       }
       return led_max < DRIVER_LED_TOTAL;
     }
