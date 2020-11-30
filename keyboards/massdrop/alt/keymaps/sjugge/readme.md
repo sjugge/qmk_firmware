@@ -10,6 +10,7 @@ Alterations from the default layout.
 
 * `KC_ESC` is mapped to Caps Lock
 * `KC_GRV` is mapped to Escape
+* Right CTROL is mapped to Right ALT
 
 ![](./.docs/layer_0.png)
 
