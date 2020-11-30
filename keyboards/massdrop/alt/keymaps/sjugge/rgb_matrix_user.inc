@@ -6,14 +6,13 @@ RGB_MATRIX_EFFECT(sjugge_tne_aqua)
 RGB_MATRIX_EFFECT(sjugge_tne_green)
 
 RGB_MATRIX_EFFECT(sjugge_carbon_beige)
+RGB_MATRIX_EFFECT(sjugge_carbon_escape)
 RGB_MATRIX_EFFECT(sjugge_alt_brownish)
 
 RGB_MATRIX_EFFECT(HUE_BREATHING_0)
 RGB_MATRIX_EFFECT(HUE_BREATHING_1)
 RGB_MATRIX_EFFECT(HUE_BREATHING_2)
 RGB_MATRIX_EFFECT(HUE_BREATHING_3)
-RGB_MATRIX_EFFECT(HUE_BREATHING_4)
-RGB_MATRIX_EFFECT(HUE_BREATHING_5)
 
 RGB_MATRIX_EFFECT(HUE_PENDULUM_0)
 RGB_MATRIX_EFFECT(HUE_PENDULUM_1)
@@ -81,6 +80,16 @@ RGB_MATRIX_EFFECT(HUE_WAVE_5)
       return led_max < DRIVER_LED_TOTAL;
     }
 
+    // Carbon escape
+    static bool sjugge_carbon_escape(effect_params_t* params) {
+      RGB_MATRIX_USE_LIMITS(led_min, led_max);
+      for (uint8_t i = led_min; i < led_max; i++) {
+        RGB_MATRIX_TEST_LED_FLAGS();
+        rgb_matrix_set_color(i, 20, 0, 0);
+      }
+      return led_max < DRIVER_LED_TOTAL;
+    }
+
     // Alt brownish
     static bool sjugge_alt_brownish(effect_params_t* params) {
       RGB_MATRIX_USE_LIMITS(led_min, led_max);
@@ -111,36 +120,6 @@ RGB_MATRIX_EFFECT(HUE_WAVE_5)
     // Hue Breathing 1
     bool HUE_BREATHING_1(effect_params_t* params) {
         RGB_MATRIX_USE_LIMITS(led_min, led_max);
-        uint8_t huedelta = 24;
-        HSV      hsv  = rgb_matrix_config.hsv;
-        uint16_t time = scale16by8(g_rgb_timer, rgb_matrix_config.speed / 8);
-        hsv.h         = hsv.h + scale8(abs8(sin8(time) - 64) * 2, huedelta);
-        RGB rgb       = hsv_to_rgb(hsv);
-        for (uint8_t i = led_min; i < led_max; i++) {
-            RGB_MATRIX_TEST_LED_FLAGS();
-            rgb_matrix_set_color(i, rgb.r, rgb.g, rgb.b);
-        }
-        return led_max < DRIVER_LED_TOTAL;
-    }
-
-    // Hue Breathing 2
-    bool HUE_BREATHING_2(effect_params_t* params) {
-        RGB_MATRIX_USE_LIMITS(led_min, led_max);
-        uint8_t huedelta = 48;
-        HSV      hsv  = rgb_matrix_config.hsv;
-        uint16_t time = scale16by8(g_rgb_timer, rgb_matrix_config.speed / 8);
-        hsv.h         = hsv.h + scale8(abs8(sin8(time) - 64) * 2, huedelta);
-        RGB rgb       = hsv_to_rgb(hsv);
-        for (uint8_t i = led_min; i < led_max; i++) {
-            RGB_MATRIX_TEST_LED_FLAGS();
-            rgb_matrix_set_color(i, rgb.r, rgb.g, rgb.b);
-        }
-        return led_max < DRIVER_LED_TOTAL;
-    }
-
-    // Hue Breathing 3
-    bool HUE_BREATHING_3(effect_params_t* params) {
-        RGB_MATRIX_USE_LIMITS(led_min, led_max);
         uint8_t huedelta = 96;
         HSV      hsv  = rgb_matrix_config.hsv;
         uint16_t time = scale16by8(g_rgb_timer, rgb_matrix_config.speed / 8);
@@ -153,8 +132,8 @@ RGB_MATRIX_EFFECT(HUE_WAVE_5)
         return led_max < DRIVER_LED_TOTAL;
     }
 
-    // Hue Breathing 4
-    bool HUE_BREATHING_4(effect_params_t* params) {
+    // Hue Breathing 2
+    bool HUE_BREATHING_2(effect_params_t* params) {
         RGB_MATRIX_USE_LIMITS(led_min, led_max);
         uint8_t huedelta = 128;
         HSV      hsv  = rgb_matrix_config.hsv;
@@ -168,8 +147,8 @@ RGB_MATRIX_EFFECT(HUE_WAVE_5)
         return led_max < DRIVER_LED_TOTAL;
     }
 
-    // Hue Breathing 5
-    bool HUE_BREATHING_5(effect_params_t* params) {
+    // Hue Breathing 3
+    bool HUE_BREATHING_3(effect_params_t* params) {
         RGB_MATRIX_USE_LIMITS(led_min, led_max);
         uint8_t huedelta = 128;
         HSV      hsv  = rgb_matrix_config.hsv;
@@ -196,8 +175,8 @@ RGB_MATRIX_EFFECT(HUE_WAVE_5)
 
     // Hue Pendulum 1
     static HSV HUE_PENDULUM_math_1(HSV hsv, uint8_t i, uint8_t time) {
-        uint8_t huedelta = 24;
-        hsv.h = hsv.h + scale8(abs8(sin8(time) + (g_led_config.point[i].x) - 64) * 2, huedelta);
+        uint8_t huedelta = 18;
+        hsv.h = hsv.h + scale8(abs8(sin8(time) + (g_led_config.point[i].x) - 96) * 2, huedelta);
         return hsv;
     }
 

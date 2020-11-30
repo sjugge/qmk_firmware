@@ -49,7 +49,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #define MODS_ALT  (get_mods() & MOD_BIT(KC_LALT) || get_mods() & MOD_BIT(KC_RALT))
 
 // Set startup pattern to the first custom pattern.
-uint32_t desired = 44; // If new patterns are added, this value will need to be adapted.
+uint32_t desired = 45; // If new patterns are added, this value will need to be adapted.
 void matrix_init_user() {
     rgblight_mode(desired);
 }
