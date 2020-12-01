@@ -125,6 +125,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define RGB_MATRIX_FRAMEBUFFER_EFFECTS
 #define RGB_MATRIX_KEYPRESSES
+#define RGBLIGHT_ANIMATIONS
 #define RGB_MATRIX_LED_PROCESS_LIMIT 15
 #define RGB_MATRIX_LED_FLUSH_LIMIT 10
 
