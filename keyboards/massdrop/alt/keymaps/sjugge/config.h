@@ -19,9 +19,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "config_common.h"
 
-/* Unicode */
-#define UNICODE_SELECTED_MODES UC_LNX
-
 /* USB Device descriptor parameter */
 #define VENDOR_ID           0x04D8
 #define PRODUCT_ID          0xEED3
@@ -123,10 +120,22 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define NO_ACTION_MACRO
 //#define NO_ACTION_FUNCTION
 
-#define RGB_MATRIX_FRAMEBUFFER_EFFECTS
 #define RGB_MATRIX_KEYPRESSES
-#define RGBLIGHT_ANIMATIONS
 #define RGB_MATRIX_LED_PROCESS_LIMIT 15
 #define RGB_MATRIX_LED_FLUSH_LIMIT 10
+
+#define RGB_MATRIX_FRAMEBUFFER_EFFECTS
+#define RGBLIGHT_ANIMATIONS
+
+//#define RGBLIGHT_EFFECT_ALTERNATING
+//#define RGBLIGHT_EFFECT_BREATHING
+//#define RGBLIGHT_EFFECT_CHRISTMAS
+//#define RGBLIGHT_EFFECT_KNIGHT
+//#define RGBLIGHT_EFFECT_RAINBOW_MOOD
+//#define RGBLIGHT_EFFECT_RAINBOW_SWIRL
+//#define RGBLIGHT_EFFECT_RGB_TEST
+//#define RGBLIGHT_EFFECT_SNAKE
+
+#define UNICODE_SELECTED_MODES UC_LNX
 
 #include "config_led.h"
